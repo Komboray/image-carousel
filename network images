@@ -1,0 +1,87 @@
+import 'package:Calculator/customScrollView/cards/cardscalcu.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import '../customScrollView/cards/cardscalcu1.dart';
+import '../customScrollView/cards/cardscalcu2.dart';
+import '../customScrollView/cards/cardscalcu3.dart';
+import '../customScrollView/cards/cardscalcu4.dart';
+import '../customScrollView/cards/cardscalcu5.dart';
+import '../customScrollView/cards/cardscalcu6.dart';
+import 'package:carousel_pro/carousel_pro.dart';
+import 'package:Calculator/colorutilities/color_utils.dart';
+
+class homePage extends StatefulWidget {
+  const homePage({Key? key}) : super(key: key);
+
+  @override
+  State<homePage> createState() => _homePageState();
+}
+
+class _homePageState extends State<homePage> {
+  @override
+  Widget build(BuildContext context) {
+    Widget image_carousel = new Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            hexStringToColor("CB2B93"),
+            hexStringToColor("9546C4"),
+            hexStringToColor("5E61F4"),
+          ],begin: Alignment.topCenter,end: Alignment.bottomCenter
+          )),
+      height: 150,
+      child: new Carousel(
+        boxFit: BoxFit.cover,
+        images: [
+          NetworkImage('http://192.168.28.24/PHP/spacecrafts/house_images/roo.jpg'),
+          NetworkImage('http://192.168.28.24/PHP/spacecrafts/house_images/solve.jpg'),
+          NetworkImage('http://192.168.28.24/PHP/spacecrafts/house_images/red.jpg'),
+          NetworkImage('http://192.168.28.24/PHP/spacecrafts/house_images/bedroom.jpg'),
+          NetworkImage('http://192.168.28.24/PHP/spacecrafts/house_images/team.jpg'),
+        ],
+        showIndicator: true,
+        indicatorBgPadding: 1.0,
+        borderRadius: true,
+        moveIndicatorFromBottom: 180,
+        overlayShadow: true,
+        overlayShadowSize: 0.7,
+        autoplay: true,
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(microseconds: 1000),
+      ),
+    );
+    return new ListView(
+      scrollDirection: Axis.vertical,
+      children :[
+        image_carousel,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child:
+              Center(
+        child:
+                   Row(
+                 children: [
+                      CardsCalcu(),
+                      CardsCalcu1(),
+                      CardsCalcu2(),
+                      CardsCalcu3(),
+                      CardsCalcu4(),
+                      CardsCalcu5(),
+                      CardsCalcu6(),
+            ],
+                   ),
+        ),
+        ),
+       Column(
+         children: [
+           Container(
+             height: 200,
+           ),
+         ],
+
+    ),
+      ],
+
+
+      );
+  }
+}
